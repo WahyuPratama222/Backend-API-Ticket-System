@@ -1,9 +1,3 @@
-// config/cors.js
-
-/**
- * CORS Configuration
- * Handles Cross-Origin Resource Sharing settings
- */
 export const corsOptions = {
   origin: (origin, callback) => {
     // Allow requests dengan no origin (mobile apps, Postman, curl, dll)

@@ -1,10 +1,5 @@
-// config/rateLimit.js
 import rateLimit from "express-rate-limit";
 
-/**
- * Global Rate Limiter
- * Applied to all routes
- */
 export const globalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 menit
   max: 100, // max 100 requests per window per IP

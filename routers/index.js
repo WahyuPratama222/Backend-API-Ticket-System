@@ -13,10 +13,6 @@ import { authLimiter, bookingLimiter } from "../config/rateLimit.js";
 
 const router = express.Router();
 
-/**
- * Health Check Endpoint
- * Public endpoint untuk monitoring
- */
 router.get("/health", (req, res) => {
   res.status(200).json({
     status: "success",
@@ -26,10 +22,6 @@ router.get("/health", (req, res) => {
   });
 });
 
-/**
- * Root API Endpoint
- * Shows available endpoints
- */
 router.get("/", (req, res) => {
   res.status(200).json({
     status: "success",
@@ -46,9 +38,6 @@ router.get("/", (req, res) => {
   });
 });
 
-/**
- * Mount all API routes
- */
 router.use("/login", authLimiter, authRoutes); // Apply auth rate limiter
 router.use("/users", userRoutes);
 router.use("/events", eventRoutes);

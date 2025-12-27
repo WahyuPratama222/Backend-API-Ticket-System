@@ -21,7 +21,7 @@ export const errorHandler = (err, req, res, next) => {
   }
 
   // ===== PRISMA ERRORS =====
-  
+
   // P2002: Unique constraint violation
   if (err.code === "P2002" && err.meta?.target) {
     const field = Array.isArray(err.meta.target)
@@ -30,7 +30,7 @@ export const errorHandler = (err, req, res, next) => {
 
     // Ubah nama field dari 'user_email_key' jadi 'email'
     const friendlyField = field.replace(/^user_|_key$/g, "");
-    
+
     return res.status(400).json({
       status: "fail",
       message: `${friendlyField} sudah digunakan`,

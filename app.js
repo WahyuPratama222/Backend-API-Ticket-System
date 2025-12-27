@@ -7,10 +7,10 @@ import compression from "compression";
 // ===== Configuration Imports =====
 import { corsOptions } from "./config/cors.js";
 import { globalLimiter } from "./config/rateLimit.js";
-import { 
-  helmetOptions, 
-  jsonParserOptions, 
-  urlEncodedOptions 
+import {
+  helmetOptions,
+  jsonParserOptions,
+  urlEncodedOptions,
 } from "./config/security.js";
 
 // ===== Middleware Imports =====

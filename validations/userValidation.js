@@ -1,9 +1,13 @@
 import { z } from "zod";
 
 const createUserValidation = z.object({
-  name: z.string("Nama harus diisi").min(1, { message: "Panjang nama minimal 1" }),
+  name: z
+    .string("Nama harus diisi")
+    .min(1, { message: "Panjang nama minimal 1" }),
   email: z.email({ message: "Email tidak valid" }),
-  password: z.string({ message: "Password harus diisi"}).min(8, { message: "Password minimal 8 karakter" }),
+  password: z
+    .string({ message: "Password harus diisi" })
+    .min(8, { message: "Password minimal 8 karakter" }),
   role: z.enum(["customer", "organizer"], {
     message: "Role harus 'customer' atau 'organizer'",
   }),

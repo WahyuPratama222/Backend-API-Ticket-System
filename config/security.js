@@ -1,9 +1,3 @@
-// config/security.js
-
-/**
- * Helmet Configuration
- * Security headers for production
- */
 export const helmetOptions = {
   contentSecurityPolicy: false, // Disable CSP untuk API (kalau butuh, enable di sini)
   crossOriginEmbedderPolicy: false, // Disable untuk API
