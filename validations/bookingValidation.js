@@ -19,4 +19,4 @@ const getBookingByIdValidation = z.object({
     .positive({ message: "Booking ID harus bilangan bulat positif" }),
 });
 
-export { createBookingValidation, getBookingByIdValidation }
+export { createBookingValidation, getBookingByIdValidation };

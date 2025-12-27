@@ -56,7 +56,7 @@ const getEventByIdService = async (id) => {
     select: eventSelect,
   });
   if (!event) throw new Error("Event tidak ditemukan");
-  return event; 
+  return event;
 };
 
 // ===== Update Event =====

@@ -1,3 +1,7 @@
+import bcrypt from "bcryptjs";
+import { prisma } from "../prisma/client.js";
+import { generateToken } from "../utils/token.js";
+
 export const loginService = async (email, password) => {
   const user = await prisma.user.findUnique({ where: { email } });
   if (!user) throw new Error("Email atau password salah");
