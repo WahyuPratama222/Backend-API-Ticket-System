@@ -1,5 +1,5 @@
 import { prisma } from "../prisma/client.js";
-import { generateTicketCode } from "../utils/ticket.js";
+import { generateTicketCode } from "../utils/generateTickets.js";
 
 const bookingSelect = {
   id: true,
@@ -105,4 +105,4 @@ const getBookingByIdService = async (id) => {
   return booking;
 };
 
-export { createBookingService, getAllBookingService, getBookingByIdService }
+export { createBookingService, getAllBookingService, getBookingByIdService };
