@@ -1,0 +1,114 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+/* =====================
+   ENUMS
+===================== */
+
+enum Role {
+  customer
+  organizer
+}
+
+enum EventStatus {
+  available
+  unavailable
+}
+
+enum BookingStatus {
+  pending
+  success
+  failed
+}
+
+enum TicketStatus {
+  unused
+  used
+}
+
+/* =====================
+   MODELS
+===================== */
+
+model User {
+  id        Int      @id @default(autoincrement()) @map("id_user")
+  name      String   @db.VarChar(255)
+  password  String   @db.VarChar(100)
+  email     String   @db.VarChar(100) @unique
+  role      Role
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+  // RELATIONS
+  events    Event[]
+  bookings  Booking[]
+
+  @@map("user")
+}
+
+model Event {
+  id            Int         @id @default(autoincrement()) @map("id_event")
+  organizerId   Int         @map("organizer_id")
+
+  title         String      @db.VarChar(255)
+  location      String      @db.VarChar(255)
+  capacity      Int
+  availableSeat Int         @map("available_seat")
+  price         Int
+  status        EventStatus @default(available)
+  date          DateTime
+
+  createdAt     DateTime    @default(now()) @map("created_at")
+  updatedAt     DateTime    @default(now()) @updatedAt @map("updated_at")
+
+  // RELATIONS
+  organizer     User        @relation(fields: [organizerId], references: [id])
+  bookings      Booking[]
+
+  @@map("event")
+}
+
+model Booking {
+  id          Int           @id @default(autoincrement()) @map("id_booking")
+
+  customerId  Int           @map("customer_id")
+  eventId     Int           @map("event_id")
+
+  totalPrice  Int           @map("total_price")
+  quantity    Int
+  status      BookingStatus @default(pending)
+
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @default(now()) @updatedAt @map("updated_at")
+
+  // RELATIONS
+  customer    User          @relation(fields: [customerId], references: [id])
+  event       Event         @relation(fields: [eventId], references: [id])
+  tickets     Ticket[]
+
+  @@map("booking")
+}
+
+model Ticket {
+  id         Int          @id @default(autoincrement()) @map("id_ticket")
+  bookingId  Int          @map("booking_id")
+
+  holderName String       @db.VarChar(100) @map("holder_name")
+  ticketCode String       @unique @db.VarChar(50) @map("ticket_code")
+  status     TicketStatus @default(unused)
+
+  createdAt  DateTime     @default(now()) @map("created_at")
+  updatedAt  DateTime     @default(now()) @updatedAt @map("updated_at")
+
+  // RELATIONS
+  booking    Booking      @relation(fields: [bookingId], references: [id])
+
+  @@map("ticket")
+}

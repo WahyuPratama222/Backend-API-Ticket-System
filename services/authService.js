@@ -1,0 +1,21 @@
+export const loginService = async (email, password) => {
+  const user = await prisma.user.findUnique({ where: { email } });
+  if (!user) throw new Error("Email atau password salah");
+
+  const valid = await bcrypt.compare(password, user.password);
+  if (!valid) throw new Error("Email atau password salah");
+
+  const token = generateToken(user);
+
+  return {
+    user: {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
+    },
+    token,
+  };
+};
