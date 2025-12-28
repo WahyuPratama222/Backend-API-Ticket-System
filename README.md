@@ -106,6 +106,9 @@ Project ini menggunakan **Prisma ORM** untuk mengelola database.
 ### 🔹 Setup Database
 
 ```bash
+# Install All Dependencies
+npm install
+
 # Generate Prisma Client
 npm run db:generate
 
