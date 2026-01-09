@@ -12,7 +12,7 @@
   </p>
 
   <p>
-    <strong>RESTful API untuk sistem tiket event dengan autentikasi dan otorisasi berbasis role</strong><br />
+    <strong>RESTful API for event ticket management system with role-based authentication and authorization</strong><br />
   </p>
 
   <p>
@@ -23,73 +23,73 @@
 
 ---
 
-## 🌟 Gambaran Umum
+## 🌟 Overview
 
-> Backend service untuk sistem manajemen tiket event dengan fokus pada **keamanan autentikasi**, **kontrol akses berbasis role**, dan **real-time stock validation**
+> Backend service for event ticket management system with focus on **secure authentication**, **role-based access control**, and **real-time stock validation**
 
-Ticket System API adalah backend service yang menyediakan fitur lengkap untuk manajemen event dan pemesanan tiket, dilengkapi dengan sistem autentikasi JWT, role-based access control, dan validasi stok real-time menggunakan database transaction & locking.
+Ticket System API is a comprehensive backend service providing full-featured event and ticket booking management, equipped with JWT authentication, role-based access control, and real-time stock validation using database transactions & locking.
 
-Aplikasi ini dirancang dengan pendekatan **RESTful API**, menerapkan **best practice Express & Prisma**, serta memperhatikan aspek **keamanan, konsistensi data, dan skalabilitas**.
+This application is designed with a **RESTful API** approach, implementing **Express & Prisma best practices**, while focusing on **security, data consistency, and scalability**.
 
 ---
 
-## ✨ Fitur Utama
+## ✨ Key Features
 
-### 🚀 Kenapa Project Ini? 
-- Implementasi **JWT Authentication** untuk secure access control
+### 🚀 Why This Project? 
+- Implementation of **JWT Authentication** for secure access control
 - **Role-Based Authorization** (Customer & Organizer)
-- **Real-time Stock Validation** dengan Prisma transaction & row locking
-- **Rate Limiting** untuk mencegah abuse
-- **Input Validation** dengan Zod schema
-- Struktur kode yang clean dan maintainable
+- **Real-time Stock Validation** with Prisma transaction & row locking
+- **Rate Limiting** to prevent abuse
+- **Input Validation** with Zod schema
+- Clean and maintainable code structure
 
-### 🔹 Fungsionalitas Inti
-- 👥 **Manajemen User** (Customer & Organizer)
-- 🔐 **Autentikasi & Otorisasi** berbasis JWT + bcrypt
-- 🎉 **Manajemen Event** (Organizer only)
-- 🎫 **Sistem Booking Tiket** (Customer only, dengan stok real-time)
-- 🎟️ **Manajemen Tiket** (Generate, track, mark as used)
+### 🔹 Core Functionality
+- 👥 **User Management** (Customer & Organizer)
+- 🔐 **Authentication & Authorization** based on JWT + bcrypt
+- 🎉 **Event Management** (Organizer only)
+- 🎫 **Ticket Booking System** (Customer only, with real-time stock)
+- 🎟️ **Ticket Management** (Generate, track, mark as used)
 
-### 🔹 Sorotan Teknis
-- 🎯 **Database Transaction** dengan Prisma
-- 🔒 **Row-Level Locking** untuk mencegah race condition
-- ✅ **Input Validation** di setiap endpoint dengan Zod
-- 🛡️ **JWT Authentication** dengan role-based middleware
-- 🚦 **Rate Limiting** untuk auth & booking endpoints
-- 🏗️ **Clean Architecture** dengan separation of concerns
-- 📝 **Comprehensive Documentation** di README & Postman Collection
+### 🔹 Technical Highlights
+- 🎯 **Database Transaction** with Prisma
+- 🔒 **Row-Level Locking** to prevent race conditions
+- ✅ **Input Validation** at every endpoint with Zod
+- 🛡️ **JWT Authentication** with role-based middleware
+- 🚦 **Rate Limiting** for auth & booking endpoints
+- 🏗️ **Clean Architecture** with separation of concerns
+- 📝 **Comprehensive Documentation** in README & Postman Collection
 
 ---
 
-## 📋 Daftar Isi
-1. [Prasyarat](#prasyarat)
-2. [Instalasi](#instalasi)
-3. [Setup Database](#setup-database)
-4. [Konfigurasi Environment](#konfigurasi-environment)
-5. [Menjalankan Aplikasi](#menjalankan-aplikasi)
-6. [Struktur Proyek](#struktur-proyek)
+## 📋 Table of Contents
+1. [Prerequisites](#prerequisites)
+2. [Installation](#installation)
+3. [Database Setup](#database-setup)
+4. [Environment Configuration](#environment-configuration)
+5. [Running the Application](#running-the-application)
+6. [Project Structure](#project-structure)
 7. [API Endpoints](#api-endpoints)
-8. [Arsitektur & Keamanan](#arsitektur--keamanan)
-9. [Fitur Keamanan](#fitur-keamanan)
+8. [Architecture & Security](#architecture--security)
+9. [Security Features](#security-features)
 10. [Business Logic](#business-logic)
-11. [Testing dengan Postman](#testing-dengan-postman)
+11. [Testing with Postman](#testing-with-postman)
 12. [Troubleshooting](#troubleshooting)
 
 ---
 
-## 🔧 1. Prasyarat
+## 🔧 1. Prerequisites
 
-Pastikan environment pengembangan telah memenuhi kebutuhan berikut:
+Ensure your development environment meets the following requirements:
 - **Node.js** >= 18.x
 - **MySQL** >= 8.0
 - **npm** >= 6.x
-- **Git** (untuk clone repository)
+- **Git** (for repository cloning)
 
 ---
 
-## 📦 2. Instalasi
+## 📦 2. Installation
 
-Clone repository dan install seluruh dependency:
+Clone the repository and install all dependencies:
 
 ```bash
 git clone <repository-url>
@@ -99,11 +99,11 @@ npm install
 
 ---
 
-## 🗄️ 3. Setup Database
+## 🗄️ 3. Database Setup
 
-Project ini menggunakan **Prisma ORM** untuk mengelola database.
+This project uses **Prisma ORM** for database management.
 
-### 🔹 Setup Database
+### 🔹 Database Setup
 
 ```bash
 # Install All Dependencies
@@ -115,7 +115,7 @@ npm run db:generate
 # Run migrations
 npm run db:migrate
 
-# Seed database dengan data dummy
+# Seed database with dummy data
 npm run db:seed
 
 # Reset database (drop + migrate + seed)
@@ -131,9 +131,9 @@ npm run db:studio
 
 ---
 
-## ⚙️ 4. Konfigurasi Environment
+## ⚙️ 4. Environment Configuration
 
-Buat file `.env` di root project dengan template berikut:
+Create a `.env` file in the project root with the following template:
 
 ```env
 # Server Configuration
@@ -151,34 +151,34 @@ JWT_EXPIRES_IN=7d
 CLIENT_URL=http://localhost:3000,http://localhost:5173
 ```
 
-> ⚠️ **Penting**: Ganti `your_password` dan `JWT_SECRET` dengan nilai yang aman!
+> ⚠️ **Important**: Replace `your_password` and `JWT_SECRET` with secure values!
 
-### Penjelasan Environment Variables
+### Environment Variables Explanation
 
-| Variable | Deskripsi | Default | Required |
-|----------|-----------|---------|----------|
-| `SERVER_PORT` | Port server Express | 5000 | No |
+| Variable | Description | Default | Required |
+|----------|-------------|---------|----------|
+| `SERVER_PORT` | Express server port | 5000 | No |
 | `NODE_ENV` | Environment mode | development | Yes |
 | `DATABASE_URL` | MySQL connection string | - | Yes |
-| `JWT_SECRET` | Secret key untuk JWT | - | Yes |
+| `JWT_SECRET` | Secret key for JWT | - | Yes |
 | `JWT_EXPIRES_IN` | JWT token expiration | 7d | No |
 | `CLIENT_URL` | Allowed CORS origins (comma separated) | - | Yes |
 
 ---
 
-## 🚀 5. Menjalankan Aplikasi
+## 🚀 5. Running the Application
 
-### Mode Development (dengan auto-reload)
+### Development Mode (with auto-reload)
 ```bash
 npm run dev
 ```
 
-### Mode Production
+### Production Mode
 ```bash
 npm start
 ```
 
-### Default User untuk Testing (dari seeder)
+### Default Users for Testing (from seeder)
 
 | Email | Password | Role |
 |-------|----------|------|
@@ -188,16 +188,16 @@ npm start
 | organizer@events.com | password123 | Organizer |
 | concert@events.com | password123 | Organizer |
 
-Server akan berjalan di: `http://localhost:5000`
+Server will run at: `http://localhost:5000`
 
 ---
 
-## 📁 6. Struktur Proyek
+## 📁 6. Project Structure
 
 ```
 backend-api-ticket-system/
 ├── config/
-│   ├── cors.js                # Konfigurasi CORS
+│   ├── cors.js                # CORS configuration
 │   ├── rateLimit.js           # Rate limiting config
 │   └── security.js            # Security headers config
 ├── controllers/               # HTTP request handlers
@@ -230,7 +230,8 @@ backend-api-ticket-system/
 │   └── userService.js
 ├── utils/                    # Utility functions
 │   ├── generateTickets.js   # Ticket code generator
-│   └── token.js              # JWT token utilities
+│   ├── token.js              # JWT token utilities
+│   └── validateEnv.js        # Environment validation
 ├── validations/              # Zod validation schemas
 │   ├── authValidation.js
 │   ├── bookingValidation.js
@@ -245,20 +246,20 @@ backend-api-ticket-system/
 └── server.js                 # Application entry point
 ```
 
-### Penjelasan Layer Arsitektur
+### Architecture Layer Explanation
 
-1. **Routes** → Mendefinisikan endpoint dan HTTP methods
-2. **Controllers** → Handle request/response HTTP
-3. **Validations** → Zod schema untuk validasi input
+1. **Routes** → Define endpoints and HTTP methods
+2. **Controllers** → Handle HTTP request/response
+3. **Validations** → Zod schema for input validation
 4. **Services** → Business logic, database operations, transactions
 5. **Middlewares** → Authentication, authorization, error handling
-6. **Utils** → Helper functions yang reusable
+6. **Utils** → Reusable helper functions
 
 ---
 
 ## 🔌 7. API Endpoints
 
-> Dokumentasi lengkap endpoint sesuai dengan requirements **"Secure the Crowd!"**
+> Complete endpoint documentation according to **"Secure the Crowd!"** requirements
 
 ### Base URL
 ```
@@ -274,12 +275,12 @@ http://localhost:5000
 GET /health
 ```
 
-**Response Success (200)**
+**Success Response (200)**
 ```json
 {
   "status": "success",
-  "message": "Server berjalan dengan baik",
-  "timestamp": "2025-12-28T10:30:00.000Z",
+  "message": "The server is running well",
+  "timestamp": "2025-01-09T10:30:00.000Z",
   "environment": "development"
 }
 ```
@@ -289,11 +290,11 @@ GET /health
 GET /
 ```
 
-**Response Success (200)**
+**Success Response (200)**
 ```json
 {
   "status": "success",
-  "message": "Selamat Datang di API Sistem Ticket",
+  "message": "Welcome to the Ticket System API",
   "version": "1.0.0",
   "endpoints": {
     "health": "/health",
@@ -325,7 +326,7 @@ POST /login
 }
 ```
 
-**Response Success (200)**
+**Success Response (200)**
 ```json
 {
   "user": {
@@ -333,40 +334,40 @@ POST /login
     "name": "John Doe",
     "email": "john@customer.com",
     "role": "customer",
-    "createdAt": "2025-12-28T10:00:00.000Z",
-    "updatedAt": "2025-12-28T10:00:00.000Z"
+    "createdAt": "2025-01-09T10:00:00.000Z",
+    "updatedAt": "2025-01-09T10:00:00.000Z"
   },
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
 ```
 
-**Response Error (400) - Validation Error**
+**Error Response (400) - Validation Error**
 ```json
 {
   "status": "fail",
-  "message": "Kesalahan validasi",
+  "message": "Validation error",
   "errors": [
     {
       "field": "email",
-      "message": "Email tidak valid"
+      "message": "Invalid email"
     }
   ]
 }
 ```
 
-**Response Error (401) - Invalid Credentials**
+**Error Response (401) - Invalid Credentials**
 ```json
 {
   "status": "fail",
-  "message": "Email atau password salah"
+  "message": "Invalid email or password"
 }
 ```
 
-**Response Error (429) - Rate Limit Exceeded**
+**Error Response (429) - Rate Limit Exceeded**
 ```json
 {
   "status": "error",
-  "message": "Terlalu banyak percobaan login, coba lagi dalam 15 menit"
+  "message": "Too many login attempts, please try again in 15 minutes"
 }
 ```
 
@@ -395,23 +396,23 @@ POST /users
 - `password`: string, min 8 characters
 - `role`: enum ["customer", "organizer"]
 
-**Response Success (201)**
+**Success Response (201)**
 ```json
 {
   "id": 6,
   "name": "New Customer",
   "email": "newcustomer@mail.com",
   "role": "customer",
-  "createdAt": "2025-12-28T11:00:00.000Z",
-  "updatedAt": "2025-12-28T11:00:00.000Z"
+  "createdAt": "2025-01-09T11:00:00.000Z",
+  "updatedAt": "2025-01-09T11:00:00.000Z"
 }
 ```
 
-**Response Error (400) - Email Already Exists**
+**Error Response (400) - Email Already Exists**
 ```json
 {
   "status": "fail",
-  "message": "email sudah digunakan"
+  "message": "email is already in use"
 }
 ```
 
@@ -420,7 +421,7 @@ POST /users
 GET /users
 ```
 
-**Response Success (200)**
+**Success Response (200)**
 ```json
 [
   {
@@ -428,16 +429,16 @@ GET /users
     "name": "John Doe",
     "email": "john@customer.com",
     "role": "customer",
-    "createdAt": "2025-12-28T10:00:00.000Z",
-    "updatedAt": "2025-12-28T10:00:00.000Z"
+    "createdAt": "2025-01-09T10:00:00.000Z",
+    "updatedAt": "2025-01-09T10:00:00.000Z"
   },
   {
     "id": 4,
     "name": "Event Organizer Pro",
     "email": "organizer@events.com",
     "role": "organizer",
-    "createdAt": "2025-12-28T10:00:00.000Z",
-    "updatedAt": "2025-12-28T10:00:00.000Z"
+    "createdAt": "2025-01-09T10:00:00.000Z",
+    "updatedAt": "2025-01-09T10:00:00.000Z"
   }
 ]
 ```
@@ -449,35 +450,35 @@ GET /users/:id
 
 **Example:** `GET /users/1`
 
-**Response Success (200)**
+**Success Response (200)**
 ```json
 {
   "id": 1,
   "name": "John Doe",
   "email": "john@customer.com",
   "role": "customer",
-  "createdAt": "2025-12-28T10:00:00.000Z",
-  "updatedAt": "2025-12-28T10:00:00.000Z"
+  "createdAt": "2025-01-09T10:00:00.000Z",
+  "updatedAt": "2025-01-09T10:00:00.000Z"
 }
 ```
 
-**Response Error (404)**
+**Error Response (404)**
 ```json
 {
   "status": "fail",
-  "message": "User tidak ditemukan"
+  "message": "User not found"
 }
 ```
 
-**Response Error (400) - Invalid ID**
+**Error Response (400) - Invalid ID**
 ```json
 {
   "status": "fail",
-  "message": "Kesalahan validasi",
+  "message": "Validation error",
   "errors": [
     {
       "field": "id",
-      "message": "User ID harus bilangan bulat positif"
+      "message": "User ID must be a positive integer"
     }
   ]
 }
@@ -488,7 +489,7 @@ GET /users/:id
 PATCH /users/:id
 ```
 
-**Request Body** (semua field optional)
+**Request Body** (all fields optional)
 ```json
 {
   "name": "Updated Name",
@@ -496,15 +497,15 @@ PATCH /users/:id
 }
 ```
 
-**Response Success (200)**
+**Success Response (200)**
 ```json
 {
   "id": 1,
   "name": "Updated Name",
   "email": "john@customer.com",
   "role": "customer",
-  "createdAt": "2025-12-28T10:00:00.000Z",
-  "updatedAt": "2025-12-28T11:30:00.000Z"
+  "createdAt": "2025-01-09T10:00:00.000Z",
+  "updatedAt": "2025-01-09T11:30:00.000Z"
 }
 ```
 
@@ -513,13 +514,13 @@ PATCH /users/:id
 DELETE /users/:id
 ```
 
-**Response Success (204 No Content)**
+**Success Response (204 No Content)**
 
 ---
 
 ### 🎉 Events
 
-> **Note:** Create, Update, dan Delete event **HANYA untuk Organizer** (authenticated)
+> **Note:** Create, Update, and Delete events are **ONLY for Organizers** (authenticated)
 
 #### 9. Create Event (Organizer Only)
 ```http
@@ -550,7 +551,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 - `price`: integer, min 0
 - `date`: valid date, must be in the future
 
-**Response Success (201)**
+**Success Response (201)**
 ```json
 {
   "id": 3,
@@ -561,36 +562,36 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
   "price": 500000,
   "status": "available",
   "date": "2026-12-31T19:00:00.000Z",
-  "createdAt": "2025-12-28T11:00:00.000Z",
-  "updatedAt": "2025-12-28T11:00:00.000Z"
+  "createdAt": "2025-01-09T11:00:00.000Z",
+  "updatedAt": "2025-01-09T11:00:00.000Z"
 }
 ```
 
-**Response Error (401) - Not Authenticated**
+**Error Response (401) - Not Authenticated**
 ```json
 {
   "status": "fail",
-  "message": "Tidak terautentikasi, token tidak ditemukan"
+  "message": "Not authenticated, token not found"
 }
 ```
 
-**Response Error (403) - Not Organizer**
+**Error Response (403) - Not Organizer**
 ```json
 {
   "status": "fail",
-  "message": "Akses ditolak, role user tidak sesuai"
+  "message": "Access denied, user role does not match"
 }
 ```
 
-**Response Error (400) - Date in Past**
+**Error Response (400) - Date in Past**
 ```json
 {
   "status": "fail",
-  "message": "Kesalahan validasi",
+  "message": "Validation error",
   "errors": [
     {
       "field": "date",
-      "message": "Tanggal event harus di masa depan"
+      "message": "Event date must be in the future"
     }
   ]
 }
@@ -601,7 +602,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 GET /events
 ```
 
-**Response Success (200)**
+**Success Response (200)**
 ```json
 [
   {
@@ -613,8 +614,8 @@ GET /events
     "price": 500000,
     "status": "available",
     "date": "2025-12-31T19:00:00.000Z",
-    "createdAt": "2025-12-28T10:00:00.000Z",
-    "updatedAt": "2025-12-28T10:30:00.000Z"
+    "createdAt": "2025-01-09T10:00:00.000Z",
+    "updatedAt": "2025-01-09T10:30:00.000Z"
   },
   {
     "id": 2,
@@ -625,8 +626,8 @@ GET /events
     "price": 1500000,
     "status": "available",
     "date": "2025-11-15T09:00:00.000Z",
-    "createdAt": "2025-12-28T10:00:00.000Z",
-    "updatedAt": "2025-12-28T10:00:00.000Z"
+    "createdAt": "2025-01-09T10:00:00.000Z",
+    "updatedAt": "2025-01-09T10:00:00.000Z"
   }
 ]
 ```
@@ -638,7 +639,7 @@ GET /events/:id
 
 **Example:** `GET /events/1`
 
-**Response Success (200)**
+**Success Response (200)**
 ```json
 {
   "id": 1,
@@ -649,16 +650,16 @@ GET /events/:id
   "price": 500000,
   "status": "available",
   "date": "2025-12-31T19:00:00.000Z",
-  "createdAt": "2025-12-28T10:00:00.000Z",
-  "updatedAt": "2025-12-28T10:30:00.000Z"
+  "createdAt": "2025-01-09T10:00:00.000Z",
+  "updatedAt": "2025-01-09T10:30:00.000Z"
 }
 ```
 
-**Response Error (404)**
+**Error Response (404)**
 ```json
 {
   "status": "fail",
-  "message": "Event tidak ditemukan"
+  "message": "Event not found"
 }
 ```
 
@@ -668,7 +669,7 @@ PATCH /events/:id
 Authorization: Bearer <organizer_token>
 ```
 
-**Request Body** (semua field optional)
+**Request Body** (all fields optional)
 ```json
 {
   "title": "Updated Concert Title",
@@ -677,7 +678,7 @@ Authorization: Bearer <organizer_token>
 }
 ```
 
-**Response Success (200)**
+**Success Response (200)**
 ```json
 {
   "id": 1,
@@ -688,24 +689,24 @@ Authorization: Bearer <organizer_token>
   "price": 600000,
   "status": "available",
   "date": "2025-12-31T19:00:00.000Z",
-  "createdAt": "2025-12-28T10:00:00.000Z",
-  "updatedAt": "2025-12-28T12:00:00.000Z"
+  "createdAt": "2025-01-09T10:00:00.000Z",
+  "updatedAt": "2025-01-09T12:00:00.000Z"
 }
 ```
 
-**Response Error (403) - Not Event Owner**
+**Error Response (403) - Not Event Owner**
 ```json
 {
   "status": "fail",
-  "message": "Bukan pemilik event"
+  "message": "Not the event owner"
 }
 ```
 
-**Response Error (400) - Capacity Too Small**
+**Error Response (400) - Capacity Too Small**
 ```json
 {
   "status": "fail",
-  "message": "Capacity tidak boleh kurang dari 2"
+  "message": "Capacity cannot be less than 2"
 }
 ```
 
@@ -715,13 +716,13 @@ DELETE /events/:id
 Authorization: Bearer <organizer_token>
 ```
 
-**Response Success (204 No Content)**
+**Success Response (204 No Content)**
 
-**Response Error (400) - Event Not Available**
+**Error Response (400) - Event Not Available**
 ```json
 {
   "status": "fail",
-  "message": "Event tidak tersedia"
+  "message": "Event not available"
 }
 ```
 
@@ -729,7 +730,7 @@ Authorization: Bearer <organizer_token>
 
 ### 🎫 Bookings
 
-> **Note:** Semua endpoint booking **memerlukan authentication** (Customer role)
+> **Note:** All booking endpoints **require authentication** (Customer role)
 
 #### 14. Create Booking (Customer Only)
 ```http
@@ -753,7 +754,7 @@ Authorization: Bearer <customer_token>
 - `quantity`: integer, min 1
 - `holders`: array of strings (optional, length must match quantity)
 
-**Response Success (201)**
+**Success Response (201)**
 ```json
 {
   "id": 1,
@@ -761,62 +762,62 @@ Authorization: Bearer <customer_token>
   "quantity": 2,
   "totalPrice": 1000000,
   "status": "success",
-  "createdAt": "2025-12-28T12:00:00.000Z",
-  "updatedAt": "2025-12-28T12:00:00.000Z",
+  "createdAt": "2025-01-09T12:00:00.000Z",
+  "updatedAt": "2025-01-09T12:00:00.000Z",
   "tickets": [
     {
       "id": 1,
       "holderName": "John Doe",
-      "ticketCode": "ABCD-1234-EFGH-5678",
+      "ticketCode": "ABCD-1234-EFGH-567890",
       "status": "unused"
     },
     {
       "id": 2,
       "holderName": "Jane Smith",
-      "ticketCode": "IJKL-9012-MNOP-3456",
+      "ticketCode": "IJKL-9012-MNOP-345678",
       "status": "unused"
     }
   ]
 }
 ```
 
-**Response Error (401) - Not Authenticated**
+**Error Response (401) - Not Authenticated**
 ```json
 {
   "status": "fail",
-  "message": "Tidak terautentikasi, token tidak ditemukan"
+  "message": "Not authenticated, token not found"
 }
 ```
 
-**Response Error (400) - Event Not Found**
+**Error Response (400) - Event Not Found**
 ```json
 {
   "status": "fail",
-  "message": "Event tidak ditemukan"
+  "message": "Event not found"
 }
 ```
 
-**Response Error (400) - Event Not Available**
+**Error Response (400) - Event Not Available**
 ```json
 {
   "status": "fail",
-  "message": "Event tidak tersedia"
+  "message": "Event not available"
 }
 ```
 
-**Response Error (400) - Insufficient Seats**
+**Error Response (400) - Insufficient Seats**
 ```json
 {
   "status": "fail",
-  "message": "Kursi tidak cukup"
+  "message": "Not enough seats available"
 }
 ```
 
-**Response Error (429) - Rate Limit Exceeded**
+**Error Response (429) - Rate Limit Exceeded**
 ```json
 {
   "status": "error",
-  "message": "Terlalu banyak booking, coba lagi dalam beberapa menit"
+  "message": "Too many bookings, try again in a few minutes"
 }
 ```
 
@@ -826,7 +827,7 @@ GET /bookings
 Authorization: Bearer <token>
 ```
 
-**Response Success (200)**
+**Success Response (200)**
 ```json
 [
   {
@@ -835,19 +836,19 @@ Authorization: Bearer <token>
     "quantity": 2,
     "totalPrice": 1000000,
     "status": "success",
-    "createdAt": "2025-12-28T12:00:00.000Z",
-    "updatedAt": "2025-12-28T12:00:00.000Z",
+    "createdAt": "2025-01-09T12:00:00.000Z",
+    "updatedAt": "2025-01-09T12:00:00.000Z",
     "tickets": [
       {
         "id": 1,
         "holderName": "John Doe",
-        "ticketCode": "ABCD-1234-EFGH-5678",
+        "ticketCode": "ABCD-1234-EFGH-567890",
         "status": "unused"
       },
       {
         "id": 2,
         "holderName": "Jane Smith",
-        "ticketCode": "IJKL-9012-MNOP-3456",
+        "ticketCode": "IJKL-9012-MNOP-345678",
         "status": "unused"
       }
     ]
@@ -863,7 +864,7 @@ Authorization: Bearer <token>
 
 **Example:** `GET /bookings/1`
 
-**Response Success (200)**
+**Success Response (200)**
 ```json
 {
   "id": 1,
@@ -871,30 +872,30 @@ Authorization: Bearer <token>
   "quantity": 2,
   "totalPrice": 1000000,
   "status": "success",
-  "createdAt": "2025-12-28T12:00:00.000Z",
-  "updatedAt": "2025-12-28T12:00:00.000Z",
+  "createdAt": "2025-01-09T12:00:00.000Z",
+  "updatedAt": "2025-01-09T12:00:00.000Z",
   "tickets": [
     {
       "id": 1,
       "holderName": "John Doe",
-      "ticketCode": "ABCD-1234-EFGH-5678",
+      "ticketCode": "ABCD-1234-EFGH-567890",
       "status": "unused"
     },
     {
       "id": 2,
       "holderName": "Jane Smith",
-      "ticketCode": "IJKL-9012-MNOP-3456",
+      "ticketCode": "IJKL-9012-MNOP-345678",
       "status": "unused"
     }
   ]
 }
 ```
 
-**Response Error (404)**
+**Error Response (404)**
 ```json
 {
   "status": "fail",
-  "message": "Booking tidak ditemukan"
+  "message": "Booking not found"
 }
 ```
 
@@ -907,26 +908,26 @@ Authorization: Bearer <token>
 GET /tickets
 ```
 
-**Response Success (200)**
+**Success Response (200)**
 ```json
 [
   {
     "id": 1,
     "bookingId": 1,
     "holderName": "John Doe",
-    "ticketCode": "ABCD-1234-EFGH-5678",
+    "ticketCode": "ABCD-1234-EFGH-567890",
     "status": "unused",
-    "createdAt": "2025-12-28T12:00:00.000Z",
-    "updatedAt": "2025-12-28T12:00:00.000Z"
+    "createdAt": "2025-01-09T12:00:00.000Z",
+    "updatedAt": "2025-01-09T12:00:00.000Z"
   },
   {
     "id": 2,
     "bookingId": 1,
     "holderName": "Jane Smith",
-    "ticketCode": "IJKL-9012-MNOP-3456",
+    "ticketCode": "IJKL-9012-MNOP-345678",
     "status": "unused",
-    "createdAt": "2025-12-28T12:00:00.000Z",
-    "updatedAt": "2025-12-28T12:00:00.000Z"
+    "createdAt": "2025-01-09T12:00:00.000Z",
+    "updatedAt": "2025-01-09T12:00:00.000Z"
   }
 ]
 ```
@@ -938,24 +939,24 @@ GET /tickets/:id
 
 **Example:** `GET /tickets/1`
 
-**Response Success (200)**
+**Success Response (200)**
 ```json
 {
   "id": 1,
   "bookingId": 1,
   "holderName": "John Doe",
-  "ticketCode": "ABCD-1234-EFGH-5678",
+  "ticketCode": "ABCD-1234-EFGH-567890",
   "status": "unused",
-  "createdAt": "2025-12-28T12:00:00.000Z",
-  "updatedAt": "2025-12-28T12:00:00.000Z"
+  "createdAt": "2025-01-09T12:00:00.000Z",
+  "updatedAt": "2025-01-09T12:00:00.000Z"
 }
 ```
 
-**Response Error (404)**
+**Error Response (404)**
 ```json
 {
   "status": "fail",
-  "message": "Ticket tidak ditemukan"
+  "message": "Ticket not found"
 }
 ```
 
@@ -966,32 +967,32 @@ PATCH /tickets/used/:id
 
 **Example:** `PATCH /tickets/used/1`
 
-**Response Success (200)**
+**Success Response (200)**
 ```json
 {
   "id": 1,
   "bookingId": 1,
   "holderName": "John Doe",
-  "ticketCode": "ABCD-1234-EFGH-5678",
+  "ticketCode": "ABCD-1234-EFGH-567890",
   "status": "used",
-  "createdAt": "2025-12-28T12:00:00.000Z",
-  "updatedAt": "2025-12-28T13:00:00.000Z"
+  "createdAt": "2025-01-09T12:00:00.000Z",
+  "updatedAt": "2025-01-09T13:00:00.000Z"
 }
 ```
 
-**Response Error (400) - Already Used**
+**Error Response (400) - Already Used**
 ```json
 {
   "status": "fail",
-  "message": "Ticket sudah digunakan"
+  "message": "Ticket has already been used"
 }
 ```
 
 ---
 
-## 🏗️ 8. Arsitektur & Keamanan
+## 🏗️ 8. Architecture & Security
 
-### Flow Arsitektur
+### Architecture Flow
 
 ```
 Client Request
@@ -1012,50 +1013,50 @@ Client Request
       ↓
    MySQL Database
       ↓
-   Response ke Client
+   Response to Client
 ```
 
-### Prinsip Desain
+### Design Principles
 
 1. **Separation of Concerns**
    - Router: Define routes & apply middleware
    - Controller: Handle HTTP request/response
-   - Validation: Input validation dengan Zod
+   - Validation: Input validation with Zod
    - Service: Business logic & database operations
    - Middleware: Authentication, authorization, logging
 
 2. **Security First**
-   - JWT authentication untuk semua protected routes
+   - JWT authentication for all protected routes
    - Role-based authorization (Customer vs Organizer)
-   - Password hashing dengan bcrypt (10 rounds)
-   - Rate limiting untuk mencegah abuse
+   - Password hashing with bcrypt (10 rounds)
+   - Rate limiting to prevent abuse
    - CORS configuration
    - Helmet security headers
 
 3. **Data Consistency**
-   - Database transaction untuk operasi kritikal
-   - Row-level locking untuk prevent race condition
-   - Input validation di setiap endpoint
+   - Database transaction for critical operations
+   - Row-level locking to prevent race conditions
+   - Input validation at every endpoint
 
 ---
 
-## 🛡️ 9. Fitur Keamanan
+## 🛡️ 9. Security Features
 
 ### 1. JWT Authentication
 - Token-based authentication
-- Token expires dalam 7 hari (configurable)
-- Payload berisi: `id` dan `role`
-- Secret key disimpan di environment variable
+- Token expires in 7 days (configurable)
+- Payload contains: `id` and `role`
+- Secret key stored in environment variable
 
 ### 2. Role-Based Authorization
-**Customer dapat:**
-- Membuat booking tiket
-- Melihat booking mereka sendiri
+**Customer can:**
+- Create ticket bookings
+- View their own bookings
 
-**Organizer dapat:**
-- Membuat event baru
-- Update event milik mereka
-- Delete event milik mereka
+**Organizer can:**
+- Create new events
+- Update their events
+- Delete their events
 
 **Implementation:**
 ```javascript
@@ -1067,9 +1068,9 @@ router.post("/events", protect, authorize("organizer"), createEventController);
 ```
 
 ### 3. Password Security
-- Hashing dengan bcryptjs (salt rounds: 10)
-- Password tidak pernah disimpan dalam plain text
-- Password tidak pernah di-return di response API
+- Hashing with bcryptjs (salt rounds: 10)
+- Passwords never stored in plain text
+- Passwords never returned in API responses
 
 ### 4. Rate Limiting
 
@@ -1080,20 +1081,20 @@ router.post("/events", protect, authorize("organizer"), createEventController);
 | `/bookings` | 10 requests | 5 minutes |
 
 ### 5. Input Validation
-- Semua input divalidasi dengan Zod schema
-- Type checking otomatis
+- All inputs validated with Zod schema
+- Automatic type checking
 - Email format validation
-- Enum validation untuk role & status
+- Enum validation for role & status
 - Date validation (must be future date for events)
 
 ### 6. CORS Configuration
-- Whitelist specific origins dari environment
+- Whitelist specific origins from environment
 - Credentials support
 - Allowed methods: GET, POST, PATCH, DELETE
 
 ### 7. Error Handling
-- Custom error messages yang user-friendly
-- No internal error details exposed di production
+- Custom user-friendly error messages
+- No internal error details exposed in production
 - Consistent error response format
 
 ---
@@ -1102,19 +1103,19 @@ router.post("/events", protect, authorize("organizer"), createEventController);
 
 ### Real-Time Stock Validation
 
-#### Saat Booking Dibuat
+#### When Booking is Created
 ```javascript
 // Service: bookingService.js
 return await prisma.$transaction(async (tx) => {
-  // Lock row event untuk mencegah race condition
+  // Lock event row to prevent race conditions
   const event = await tx.$queryRawUnsafe(
     `SELECT * FROM event WHERE id_event = ? FOR UPDATE`,
     eventId
   );
 
-  // Validasi stok
+  // Validate stock
   if (eventRow.available_seat < quantity) {
-    throw new Error("Kursi tidak cukup");
+    throw new Error("Not enough seats available");
   }
 
   // Update availableSeat
@@ -1134,20 +1135,20 @@ return await prisma.$transaction(async (tx) => {
 ```
 
 **Key Points:**
-- ✅ **Row-level locking** dengan `FOR UPDATE` mencegah race condition
-- ✅ **Transaction** memastikan atomicity
-- ✅ **Auto update status** event menjadi "unavailable" jika kursi habis
-- ✅ **Rollback otomatis** jika terjadi error
+- ✅ **Row-level locking** with `FOR UPDATE` prevents race conditions
+- ✅ **Transaction** ensures atomicity
+- ✅ **Auto update status** event becomes "unavailable" when seats run out
+- ✅ **Automatic rollback** if error occurs
 
 ### Event Status Management
 
 **Event Status:**
-- `available`: Ada kursi tersedia
-- `unavailable`: Kursi habis atau dihapus oleh organizer
+- `available`: Seats available
+- `unavailable`: Seats sold out or deleted by organizer
 
 **Auto Status Update:**
-- Status berubah ke "unavailable" jika `availableSeat === 0`
-- Status tidak bisa diubah manual oleh organizer (system-controlled)
+- Status changes to "unavailable" if `availableSeat === 0`
+- Status cannot be manually changed by organizer (system-controlled)
 
 ### Ticket Generation
 
@@ -1157,38 +1158,38 @@ ABCD-1234-EFGH-567890
 ```
 
 - Random alphanumeric (A-Z, 0-9)
-- Timestamp di akhir untuk uniqueness
-- Formatted dengan dash setiap 4 karakter
-- Unique constraint di database
+- Timestamp at the end for uniqueness
+- Formatted with dash every 4 characters
+- Unique constraint in database
 
 **Holder Names:**
-- Default: "Ticket 1", "Ticket 2", dst. jika tidak disediakan
-- Dapat custom per ticket saat booking
+- Default: "Ticket 1", "Ticket 2", etc. if not provided
+- Can be customized per ticket during booking
 
 ---
 
-## 🧪 11. Testing dengan Postman
+## 🧪 11. Testing with Postman
 
 ### Setup Postman Collection
 
 1. Import collection: `postman/Ticket System API.postman_collection.json`
-2. Collection sudah include auto-save token feature
+2. Collection includes auto-save token feature
 3. Base URL variable: `{{base_url}}` = `http://localhost:5000`
 
-### Flow Testing Recommended
+### Recommended Testing Flow
 
 #### Step 1: Login
 ```
 POST /login
 Body: { "email": "john@customer.com", "password": "password123" }
 ```
-→ Token akan auto-saved ke variable `customer_token`
+→ Token will be auto-saved to variable `customer_token`
 
 ```
 POST /login
 Body: { "email": "organizer@events.com", "password": "password123" }
 ```
-→ Token akan auto-saved ke variable `organizer_token`
+→ Token will be auto-saved to variable `organizer_token`
 
 #### Step 2: Create Event (as Organizer)
 ```
@@ -1218,33 +1219,33 @@ Body: {
 ```
 GET /events/1
 ```
-→ Check `availableSeat` berkurang sesuai quantity
+→ Check `availableSeat` decreased by quantity
 
 ### Test Cases Coverage
 
 ✅ **Authentication:**
-- Login dengan credentials valid
-- Login dengan email tidak terdaftar
-- Login dengan password salah
-- Rate limiting pada login
+- Login with valid credentials
+- Login with unregistered email
+- Login with wrong password
+- Rate limiting on login
 
 ✅ **Authorization:**
-- Customer tidak bisa create event
-- Organizer tidak bisa booking ticket
-- Non-owner tidak bisa update/delete event
+- Customer cannot create events
+- Organizer cannot book tickets
+- Non-owner cannot update/delete events
 
 ✅ **Booking Logic:**
-- Booking dengan stok cukup
-- Booking dengan stok tidak cukup
-- Booking pada event unavailable
-- Concurrent booking (test race condition)
-- Rate limiting pada booking
+- Booking with sufficient stock
+- Booking with insufficient stock
+- Booking on unavailable event
+- Concurrent booking (test race conditions)
+- Rate limiting on booking
 
 ✅ **Validation:**
 - Invalid email format
-- Password kurang dari 8 karakter
-- Event date di masa lalu
-- Capacity kurang dari 5
+- Password less than 8 characters
+- Event date in the past
+- Capacity less than 5
 - Negative price
 - Invalid ID (non-integer)
 
@@ -1256,14 +1257,14 @@ GET /events/1
 
 **Solution:**
 ```bash
-# Login ke MySQL
+# Login to MySQL
 mysql -u root -p
 
 # Update password
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'your_new_password';
 FLUSH PRIVILEGES;
 
-# Update DATABASE_URL di .env
+# Update DATABASE_URL in .env
 DATABASE_URL="mysql://root:your_new_password@localhost:3306/ticket_system"
 ```
 
@@ -1271,36 +1272,36 @@ DATABASE_URL="mysql://root:your_new_password@localhost:3306/ticket_system"
 
 **Solution:**
 ```bash
-# Check apakah MySQL service berjalan
+# Check if MySQL service is running
 # Windows
 net start MySQL80
 
 # macOS/Linux
 sudo systemctl start mysql
-# atau
+# or
 sudo service mysql start
 ```
 
 ### Problem: JWT Token Invalid/Expired
 
 **Solution:**
-- Token expires dalam 7 hari (default)
-- Request token baru melalui `/login`
-- Pastikan `JWT_SECRET` di `.env` sama dengan yang digunakan saat generate token
+- Token expires in 7 days (default)
+- Request new token through `/login`
+- Ensure `JWT_SECRET` in `.env` matches the one used to generate token
 
-### Problem: "Tidak terautentikasi, token tidak ditemukan"
-
-**Solution:**
-- Pastikan header `Authorization: Bearer <token>` dikirim
-- Check format header (ada spasi setelah "Bearer")
-- Token harus valid dan tidak expired
-
-### Problem: "Akses ditolak, role user tidak sesuai"
+### Problem: "Not authenticated, token not found"
 
 **Solution:**
-- Customer tidak bisa akses endpoint organizer
-- Organizer tidak bisa akses endpoint customer
-- Login dengan user yang sesuai role requirement endpoint
+- Ensure header `Authorization: Bearer <token>` is sent
+- Check header format (space after "Bearer")
+- Token must be valid and not expired
+
+### Problem: "Access denied, user role does not match"
+
+**Solution:**
+- Customer cannot access organizer endpoints
+- Organizer cannot access customer endpoints
+- Login with user matching the endpoint's role requirement
 
 ### Problem: Port 5000 already in use
 
@@ -1313,7 +1314,7 @@ taskkill /PID <PID> /F
 # macOS/Linux
 lsof -ti:5000 | xargs kill -9
 
-# Atau ubah port di .env
+# Or change port in .env
 SERVER_PORT=5001
 ```
 
@@ -1434,30 +1435,30 @@ Booking (1) ─── (N) Ticket
 ### ✅ "Secure the Crowd!" Requirements
 
 #### 1. Framework Implementation
-- ✅ Menggunakan **Express.js** framework
-- ✅ **Prisma ORM** untuk database management
-- ✅ Clean architecture dengan separation of concerns
+- ✅ Using **Express.js** framework
+- ✅ **Prisma ORM** for database management
+- ✅ Clean architecture with separation of concerns
 
 #### 2. Authentication & Authorization
-- ✅ **JWT Authentication** untuk user yang sudah login
+- ✅ **JWT Authentication** for logged-in users
 - ✅ **Role-based Authorization**:
-  - Customer: hanya bisa booking tiket
-  - Organizer: hanya bisa create/update/delete event
-- ✅ Protected routes dengan middleware
+  - Customer: can only book tickets
+  - Organizer: can only create/update/delete events
+- ✅ Protected routes with middleware
 
 #### 3. Real-Time Stock Validation
-- ✅ **Database Transaction** untuk atomicity
-- ✅ **Row-Level Locking** (`FOR UPDATE`) untuk prevent race condition
-- ✅ Validasi stok tidak minus
+- ✅ **Database Transaction** for atomicity
+- ✅ **Row-Level Locking** (`FOR UPDATE`) to prevent race conditions
+- ✅ Stock validation prevents negative values
 - ✅ Auto update event status
 
 #### 4. Input Validation
-- ✅ **Zod** schema validation di semua endpoint
+- ✅ **Zod** schema validation at all endpoints
 - ✅ Type checking, format validation, business rule validation
 - ✅ Consistent error response format
 
 #### 5. Documentation
-- ✅ **README.md lengkap** dengan:
+- ✅ **Complete README.md** with:
   - API endpoints documentation
   - Request/Response examples
   - Success & error scenarios
@@ -1468,17 +1469,17 @@ Booking (1) ─── (N) Ticket
 
 ---
 
-## 🧾 Penutup
+## 🧾 Conclusion
 
-Dokumentasi API ini disusun untuk memberikan panduan lengkap penggunaan Ticket System API dengan fokus pada keamanan, validasi, dan konsistensi data.
+This documentation provides a complete guide for using the Ticket System API with focus on security, validation, and data consistency.
 
-Sistem ini telah mengimplementasikan:
+This system has implemented:
 - ✅ JWT Authentication & Role-based Authorization
-- ✅ Real-time stock validation dengan database locking
+- ✅ Real-time stock validation with database locking
 - ✅ Comprehensive input validation
 - ✅ Clean & maintainable code structure
 - ✅ Proper error handling
-- ✅ Rate limiting untuk security
+- ✅ Rate limiting for security
 - ✅ Complete API documentation
 
 ### Tech Stack Summary
@@ -1490,4 +1491,6 @@ Sistem ini telah mengimplementasikan:
 - **Validation**: Zod
 - **Security**: Helmet, CORS, Rate Limiting
 
-— Wahyu Pratama
+---
+
+**- Wahyu Pratama**
